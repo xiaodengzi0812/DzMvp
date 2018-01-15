@@ -30,7 +30,7 @@ public class BasePresenter<M extends BaseModel, V extends BaseView> {
         // 检测我们的 View 层是否实现了 BasePresenter 的View接口
         checkView();
         // 创建Model
-        createModle();
+        createModel();
         // 创建动态代理,用来解决每次去判断View层是否存在的问题
         Object viewObj = Proxy.newProxyInstance(view.getClass().getClassLoader(),
                 view.getClass().getInterfaces(),
@@ -74,7 +74,7 @@ public class BasePresenter<M extends BaseModel, V extends BaseView> {
     /**
      * 创建Module
      */
-    private void createModle() {
+    private void createModel() {
         try {
             // 获取泛型中的class
             Class<M> mClazz = (Class<M>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
@@ -107,7 +107,7 @@ public class BasePresenter<M extends BaseModel, V extends BaseView> {
      *
      * @return Model层实例
      */
-    protected M getModle() {
+    protected M getModel() {
         return mModel;
     }
 }

@@ -13,7 +13,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginContract.ILog
     @Override
     public void doLogin() {
         getView().onLoading();
-        LoginBean loginBean = getModle().doLogin();
+        LoginBean loginBean = getModel().doLogin();
         getView().onSuccess(loginBean);
     }
 }
