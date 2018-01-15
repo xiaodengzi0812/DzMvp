@@ -42,7 +42,7 @@ public class BaseProxyPresenter<V extends BaseView> implements IProxyPresenter {
                 Class<?> typeClazz = field.getType();
                 // 判断注解的class是不是继承自BasePresenter
                 if (!BasePresenter.class.isAssignableFrom(typeClazz)) {
-                    throw new RuntimeException("不支持的Presenter类型：" + typeClazz.getName());
+                    throw new RuntimeException(typeClazz.getName() + " must be extends BasePresenter");
                 }
                 BasePresenter basePresenter = null;
                 try {
