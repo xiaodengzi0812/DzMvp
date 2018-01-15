@@ -1,7 +1,5 @@
 package com.dengzi.dzmvp.activity_test;
 
-import android.os.SystemClock;
-
 import com.dengzi.dzmvp.mvp.base.BasePresenter;
 
 /**

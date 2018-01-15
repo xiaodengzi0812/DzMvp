@@ -7,6 +7,8 @@ import com.dengzi.dzmvp.mvp.base.BaseView;
 import com.dengzi.dzmvp.mvp.inject.InjectPresenter;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,18 +40,23 @@ public class BaseProxyPresenter<V extends BaseView> implements IProxyPresenter {
             if (injectPresenter != null) {
                 // 获取注解的class类type
                 Class<?> typeClazz = field.getType();
+                // 判断注解的class是不是继承自BasePresenter
+                if (!BasePresenter.class.isAssignableFrom(typeClazz)) {
+                    throw new RuntimeException("不支持的Presenter类型：" + typeClazz.getName());
+                }
+                BasePresenter basePresenter = null;
                 try {
                     // 创建一个对应class的Presenter
-                    BasePresenter basePresenter = (BasePresenter) typeClazz.newInstance();
+                    basePresenter = (BasePresenter) typeClazz.newInstance();
                     // 注入
                     field.set(mView, basePresenter);
-                    // 关连V和P
-                    basePresenter.attachView(mView);
-                    // 添加到集合
-                    mPresenterList.add(basePresenter);
                 } catch (Exception e) {
-                    throw new NullPointerException("无法解析的注解类：" + typeClazz.getName());
+                    e.printStackTrace();
                 }
+                // 关连V和P
+                basePresenter.attachView(mView);
+                // 添加到集合
+                mPresenterList.add(basePresenter);
             }
         }
     }

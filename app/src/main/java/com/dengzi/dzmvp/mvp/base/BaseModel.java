@@ -6,5 +6,5 @@ package com.dengzi.dzmvp.mvp.base;
  * @Time: 2018/1/8.
  * @Version:1.0.0
  */
-public interface BaseModle {
+public interface BaseModel {
 }
