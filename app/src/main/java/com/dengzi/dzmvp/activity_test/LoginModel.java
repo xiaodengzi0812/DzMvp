@@ -1,5 +1,7 @@
 package com.dengzi.dzmvp.activity_test;
 
+import com.dengzi.dzmvp.mvp.base.MvpCallback;
+
 /**
  * @author Djk
  * @Title:
@@ -9,10 +11,10 @@ package com.dengzi.dzmvp.activity_test;
 public class LoginModel implements LoginContract.ILoginModel {
 
     @Override
-    public LoginBean doLogin() {
+    public void doLogin(MvpCallback<LoginBean> callback) {
         LoginBean loginBean = new LoginBean();
         loginBean.setUserName("dengzi");
         loginBean.setUserPwd("fuck");
-        return loginBean;
+        callback.onSuccess(loginBean);
     }
 }

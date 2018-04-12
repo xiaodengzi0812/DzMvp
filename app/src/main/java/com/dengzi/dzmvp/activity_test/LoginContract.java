@@ -3,6 +3,7 @@ package com.dengzi.dzmvp.activity_test;
 
 import com.dengzi.dzmvp.mvp.base.BaseModel;
 import com.dengzi.dzmvp.mvp.base.BaseView;
+import com.dengzi.dzmvp.mvp.base.MvpCallback;
 
 /**
  * @author Djk
@@ -13,7 +14,7 @@ import com.dengzi.dzmvp.mvp.base.BaseView;
 public class LoginContract {
 
     public interface ILoginModel extends BaseModel {
-        LoginBean doLogin();
+        void doLogin(MvpCallback<LoginBean> callback);
     }
 
     public interface ILoginView extends BaseView {

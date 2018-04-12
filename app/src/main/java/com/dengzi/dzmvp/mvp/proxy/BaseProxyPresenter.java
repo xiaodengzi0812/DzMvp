@@ -1,14 +1,10 @@
 package com.dengzi.dzmvp.mvp.proxy;
 
-import android.util.Log;
-
 import com.dengzi.dzmvp.mvp.base.BasePresenter;
 import com.dengzi.dzmvp.mvp.base.BaseView;
 import com.dengzi.dzmvp.mvp.inject.InjectPresenter;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 

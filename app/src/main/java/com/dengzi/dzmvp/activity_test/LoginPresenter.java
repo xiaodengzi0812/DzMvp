@@ -1,6 +1,7 @@
 package com.dengzi.dzmvp.activity_test;
 
 import com.dengzi.dzmvp.mvp.base.BasePresenter;
+import com.dengzi.dzmvp.mvp.base.MvpCallback;
 
 /**
  * @author Djk
@@ -13,7 +14,17 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginContract.ILog
     @Override
     public void doLogin() {
         getView().onLoading();
-        LoginBean loginBean = getModel().doLogin();
-        getView().onSuccess(loginBean);
+        getModel().doLogin(new MvpCallback<LoginBean>() {
+            @Override
+            public void onSuccess(LoginBean data) {
+                LoginBean loginBean = data;
+                getView().onSuccess(loginBean);
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+                getView().onError(code, msg);
+            }
+        });
     }
 }
